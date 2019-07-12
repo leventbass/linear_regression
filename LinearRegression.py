@@ -1,6 +1,6 @@
 import numpy as np
 
-class LinearRegression():
+class LinearRegression:
     
   alpha = 0.03
   iterations = 1500
@@ -21,16 +21,26 @@ class LinearRegression():
     
     return self
      
-  def score(self):
+  def score(self, X=None, y=None):
       
-    y_pred = self.X @ self.params
-    
-    score = 1 - (((self.y - y_pred)**2).sum() / ((self.y-y.mean())**2).sum())
+    if X is None:
+        X = self.X
+    else:
+        n_samples = np.size(X,0)
+        X = np.hstack((np.ones((n_samples,1)),(X-np.mean(X,0)) / np.std(X,0)))
+             
+    if y is None:
+        y = self.y
+    else:
+        y = y[:, np.newaxis]
+     
+    y_pred = X @ self.params
+    score = 1 - (((y - y_pred)**2).sum() / ((y-y.mean())**2).sum())
     
     return score
 
   def predict(self, X_test):
-     y_test = np.hstack((np.ones((self.n_samples,1)),(X_test-np.mean(X_test,0)) \
+     n_samples = np.size(X_test,0)
+     y_test = np.hstack((np.ones((n_samples,1)),(X_test-np.mean(X_test,0)) \
                          / np.std(X_test,0))) @ self.params
      return y_test
-
