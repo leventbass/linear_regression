@@ -14,12 +14,17 @@ class LinearRegression():
             (self.n_samples, 1)), (X - np.mean(X, 0)) / np.std(X, 0)))
         self.y = y[:, np.newaxis]
         self.params = np.zeros((self.n_features + 1, 1))
+        self.coef_ = None
+        self.intercept_ = None
 
     def fit(self):
 
         for i in range(self.iterations):
             self.params = self.params - (self.alpha/self.n_samples) * \
             self.X.T @ (self.X @ self.params - self.y)
+
+        self.intercept_ = self.params[0]
+        self.coef_ = self.params[1:]
 
         return self
 
@@ -44,6 +49,10 @@ class LinearRegression():
 
     def predict(self, X):
         n_samples = np.size(X, 0)
-        y_test = np.hstack((np.ones((n_samples, 1)), (X-np.mean(X, 0)) \
+        y = np.hstack((np.ones((n_samples, 1)), (X-np.mean(X, 0)) \
                             / np.std(X, 0))) @ self.params
-        return y_test
+        return y
+
+    def get_params(self):
+
+        return self.params

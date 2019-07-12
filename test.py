@@ -15,5 +15,12 @@ regressor = LinearRegression(X_train, y_train).fit()
 train_accuracy = regressor.score()
 test_accuracy = regressor.score(X_test, y_test)
 
+params = regressor.get_params()
+intercept = regressor.intercept_
+coef = regressor.coef_
+
 print("Training accuracy is: {}".format(train_accuracy))
 print("Test accuracy is: {}".format(test_accuracy))
+print(params)
+print(regressor.intercept_)
+print(regressor.coef_)
