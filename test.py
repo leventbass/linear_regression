@@ -1,6 +1,8 @@
 from sklearn.datasets import load_boston
-from linear_regression import LinearRegression
+import linear_regression as lr
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 dataset = load_boston()
 
@@ -10,10 +12,12 @@ y = dataset.target
 X_train, X_test, y_train, y_test = train_test_split(\
                 X, y, test_size=0.3, random_state=42)
 
-regressor = LinearRegression(X_train, y_train).fit()
+regressor = lr.LinearRegression(X_train, y_train).fit()
 
 train_accuracy = regressor.score()
 test_accuracy = regressor.score(X_test, y_test)
+
+predictions = regressor.predict(X_test)
 
 params = regressor.get_params()
 intercept = regressor.intercept_
@@ -24,3 +28,10 @@ print("Test accuracy is: {}".format(test_accuracy))
 print(params)
 print(regressor.intercept_)
 print(regressor.coef_)
+
+reg = LinearRegression().fit(X_train, y_train)
+pred = reg.predict(X_test)
+print(reg.score(X_train, y_train))  # Train accuracy for sklearn's model
+
+plt.scatter(y_test, predictions)
+plt.scatter(y_test, pred)
