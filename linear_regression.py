@@ -2,12 +2,10 @@ import numpy as np
 
 
 class LinearRegression():
+    def __init__(self, X, y, alpha=0.03, n_iter=1500):
 
-    alpha = 0.03
-    iterations = 1500
-
-    def __init__(self, X, y):
-
+        self.alpha = alpha
+        self.n_iter = n_iter
         self.n_samples = len(y)
         self.n_features = np.size(X, 1)
         self.X = np.hstack((np.ones(
@@ -19,7 +17,7 @@ class LinearRegression():
 
     def fit(self):
 
-        for i in range(self.iterations):
+        for i in range(self.n_iter):
             self.params = self.params - (self.alpha/self.n_samples) * \
             self.X.T @ (self.X @ self.params - self.y)
 
