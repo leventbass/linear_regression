@@ -129,8 +129,7 @@ Now, how do we decide which direction we should move towards to make the total c
 </span>
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:1.2">
-
-<img src="img/cost_function.png" width=400 height=200 > <br> <br>
+![cost](img/cost_function.png)
 
 </span>
 
@@ -288,7 +287,7 @@ plt.show()
 
 
 
-![png](output_12_1.png)
+![png](img/output_12_1.png)
 
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
