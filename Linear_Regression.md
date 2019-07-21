@@ -2,7 +2,7 @@
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 # Linear Regression from Scratch with NumPy
----
+
 
 Welcome to the first post of the **Implementing Machine Learning Algorithms with NumPy** series in which I'll try to show how one can implement some machine learning algorithms with `numpy` package only. 
 
@@ -11,7 +11,7 @@ Of course, we will use other useful packages such as `matplotlib`, ` seaborn` an
 To sum it up, we will be implementing machine learning algorithms from scratch! Isn't that exciting and little bit overwhelming at the same time? Did I mention that it is super fun as well? The first algorithm that we will tackle is linear regression. Since it is the "hello world" algorithm of the machine learning universe, it will be pretty easy to implement it with NumPy. Let's start right away!
 
 ## Linear Regression Intuition
----
+
 
 
 Before we write the code for implementation of linear regression, first we need to understand what linear regression is. There are many useful resources out there that makes it quite easy to understand the concept behind regression and particularly linear regression so, I won't be going into much detail here. 
@@ -409,19 +409,6 @@ pd.DataFrame([[our_train_accuracy, sklearn_train_accuracy],[our_test_accuracy, s
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
