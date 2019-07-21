@@ -3,7 +3,6 @@
 
 # Linear Regression from Scratch with NumPy
 
-
 Welcome to the first post of the **Implementing Machine Learning Algorithms with NumPy** series in which I'll try to show how one can implement some machine learning algorithms with `numpy` package only. 
 
 Of course, we will use other useful packages such as `matplotlib`, ` seaborn` and etc. However, the use of other packages may only be limited to data visualization, data manipulation and/or loading datasets (e.g. `sklearn.datasets`) such that we won't take any shortcuts while writing the actual code for machine learning models.
@@ -11,7 +10,6 @@ Of course, we will use other useful packages such as `matplotlib`, ` seaborn` an
 To sum it up, we will be implementing machine learning algorithms from scratch! Isn't that exciting and little bit overwhelming at the same time? Did I mention that it is super fun as well? The first algorithm that we will tackle is linear regression. Since it is the "hello world" algorithm of the machine learning universe, it will be pretty easy to implement it with NumPy. Let's start right away!
 
 ## Linear Regression Intuition
-
 
 
 Before we write the code for implementation of linear regression, first we need to understand what linear regression is. There are many useful resources out there that makes it quite easy to understand the concept behind regression and particularly linear regression so, I won't be going into much detail here. 
@@ -38,7 +36,6 @@ Turns out, linear regression is used to do exactly that! It is used to get a goo
 
 
 ## Gradient Descent Algorithm
----
 
 
 Now that we know **what** linear regression is practically, we can come to the **how** part. How does this algorithm work? How can we figure out these parameters for linear regression? In machine learning, there is another famous algorithm called **gradient descent** that is widely used, not only for estimating the parameters for linear regression but for other optimization problems as well. In gradient descent algorithm, parameters of the model is changed iteratively at each step starting with the initial values of the parameters. 
@@ -160,7 +157,6 @@ So one iteration means asking each employee those three questions only once (or 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
     
 ## Linear Regression Implementation (Finally!)
----
 
 
 ```python
@@ -302,7 +298,6 @@ There you have it! We have run the algorithm successfully as we can clearly see 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Class Implementation for Linear Regression
----
 
 Finally, after implementing linear regression from scratch we can rearrange the code we have written so far, add new code, make some modifications and turn it into a class implementation so that we have our very own linear regression package! There you go:
 
@@ -370,7 +365,6 @@ Do notice the similarities between our implementation and sklearn's own implemen
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Comparing Our Implementation with Sklearn's Linear Regression
----
 
 
 ```python
