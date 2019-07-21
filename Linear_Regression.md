@@ -128,10 +128,9 @@ Now, how do we decide which direction we should move towards to make the total c
 
 </span>
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:1.2">
+
 ![cost](img/cost_function.png)
 
-</span>
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
