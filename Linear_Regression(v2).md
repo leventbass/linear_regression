@@ -2,7 +2,6 @@
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 # Linear Regression from Scratch with NumPy
----
 
 Welcome to the first post of the **Implementing Machine Learning Algorithms with NumPy** series in which I'll try to show how one can implement some machine learning algorithms with `numpy` package only. 
 
@@ -11,8 +10,6 @@ Naturally, we will be using other useful packages such as `matplotlib`. However,
 To sum it up, we will be implementing machine learning algorithms from scratch! Isn't that exciting and little bit overwhelming at the same time? Did I mention that it is super fun as well? The first algorithm that we will tackle is linear regression. Since it is the "hello world" algorithm of the machine learning universe, it will be pretty easy to implement it with **NumPy**. Let's start right away!
 
 ## Linear Regression Intuition
----
-
 
 Before we write the code for implementation of linear regression, first we need to get an idea of what linear regression is. There are many useful resources out there that makes it quite easy to understand the concept behind regression and particularly linear regression so, I won't be going into much detail here. 
 
@@ -38,7 +35,6 @@ Turns out, linear regression is used to do exactly that! It is used to get a goo
 
 
 ## Gradient Descent Algorithm
----
 
 
 Now that we have a grasp of **what** linear regression is, we can come to the **how** part. How does this algorithm work? How can we figure out these parameters for linear regression? In machine learning, there is another famous algorithm called **gradient descent** that is widely used, not only for estimating the parameters for linear regression but for other optimization problems as well. In gradient descent algorithm, parameters of the model is changed iteratively at each step starting with the initial values of the parameters. 
@@ -137,7 +133,7 @@ In our analogy, the parameters that we have chosen are actually the **variables*
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:1.2">
 
-<img src="img/cost_function.png" width=400 height=200 > <br> <br>
+![cost](img/cost_function.png)
 
 </span>
 
@@ -164,8 +160,6 @@ So one iteration means asking each employee those three questions only once (or 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
     
 ## Linear Regression Implementation (Finally!)
----
-
 
 ```python
 import numpy as np
@@ -296,7 +290,7 @@ plt.show()
 
 
 
-![png](Linear_Regression_files/Linear_Regression_12_1.png)
+![png](img/output_12_1.png)
 
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
@@ -306,7 +300,6 @@ There you have it! We have run the algorithm successfully as we can clearly see 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Class Implementation for Linear Regression
----
 
 Finally, after implementing linear regression from scratch we ca rearrange the code we have written so far, add more code, make some modifications and turn it into a class implementation so that we have our very own linear regression module! There you go:
 
@@ -374,8 +367,6 @@ Do notice the similarities between our implementation and `sklearn`'s own implem
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Comparing Our Implementation with Sklearn's Linear Regression
----
-
 
 ```python
 from sklearn.datasets import load_boston
@@ -413,19 +404,6 @@ pd.DataFrame([[our_train_accuracy, sklearn_train_accuracy],[our_test_accuracy, s
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -459,7 +437,3 @@ Undoubtedly, this has been fun. I encourage you to code this all by yourself aft
 
 I'll be back with more implementations and long (I know) blog posts in the future. Till then, take care.
 
-
-```python
-
-```
