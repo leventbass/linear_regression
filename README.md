@@ -1,6 +1,6 @@
 ## Linear Regression from Scratch using NumPy
 
-This repository contains implementation for linear regression only using `numpy` with python. 
+This repository contains implementation for linear regression using python, only with `numpy` package. 
 
 Both jupyter notebook and markdown files can be found in the directory.
 
