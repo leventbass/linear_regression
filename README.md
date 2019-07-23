@@ -4,4 +4,4 @@ This repository contains implementation for linear regression using python, only
 
 Both jupyter notebook (.ipynb) and markdown file (.md) can be found in the directory.
 
-Moreover, class implementation for linear regression, which helps the user to use the implemenation as a module, is added.
+Moreover, class implementation for linear regression, which helps the user to use the implementation as a module, is added.
