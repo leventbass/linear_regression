@@ -1,6 +1,3 @@
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
-
 # Linear Regression from Scratch with NumPy
 
 Welcome to the first post of the **Implementing Machine Learning Algorithms with NumPy** series in which I'll try to show how one can implement some machine learning algorithms with `numpy` package only. 
@@ -17,16 +14,11 @@ Linear regression is used to make some sense of the data we have at hand, *by un
 
 Suppose we want to understand how a particular company called **X** decides what to pay to its employees. There may be so many factors that go into that decision so, we go around and ask most of the employees who work there. After a lot of prying and sneaking around, it turns out that, some of them earn a lot because they have been working at the company X for quite some time, some of them earn higher than most simply because they get along really well with the boss and some earn higher because of their qualifications and talent. These three indicators seem to be the major ones so we'll be using them only. Now, with the information we have gathered, we want to understand the underlying relation between these factors and the salary that is paid to the employees currently. We come up with this oversimpflied equation:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
     
 **SALARY** = (? x _**Qualifications**_) + (? x **_Length of Service_**) + (? x _**Getting along with the Boss**_)
     
-</span>
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
-    
+
 We can see from the equation above that the salary is affected by 3 attributes. These attributes, also called **features**, affect the salary according to their own weight which is depicted in the equation as question marks simply because we don't actually know what these weights are. 
 
 Now, let's imagine what would happen if we know these weights exactly. Then, if we have an employee whose salary we don't know, we can use the features (qualifications, length of service etc.) of the employee to predict the employee's salary, that is, we would understand how these features and the target value (salary) are related. 
@@ -41,15 +33,9 @@ Now that we have a grasp of **what** linear regression is, we can come to the **
 
 To remind us once more, parameters (weights) are the numerical values that determine how much each feature affects the target value. We want to know these parameter values exactly, but in real life this is not possible because there may be  other features (hence, parameters of those features as well) affecting the target value. However, we want them to predict the target value as close as possible to the actual value. Since, the question marks in the above equation represent the parameter values, we can replace them with values like this:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
 
 **SALARY** = (1000 x _**Qualifications**_) + (200 x **_Length of Service_**) + (500 x _**Getting along with the Boss**_)
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 Here, it is obvious that qualifications feature affects salary more than the other features, because its parameter value is higher than the rest. Keep in mind that we have chosen these parameter values intuitively and we will be using them as our initial parameter values, yet these initial values will change at every step of the algorithm towards their optimal values.
 
@@ -69,45 +55,26 @@ When we asked the employee these questions, these were the answers we got:
 
 Remember that we want to predict the salary based the parameters we have chosen and the answers we've got from the employee. After predicting what the salary would be based on only these answers, we ask the employee what her actual salary is. *The difference between the predicted and actual value determines how successful our estimates for these parameters (weights) are. Gradient descent algorithm's job is to make this difference (predicted - actual) as small as possible.* Let's go ahead and call this difference **error**, since it represents how different the actual value is from the predicted value. Now, let's plug the numbers we've got from the first employee's answers into our equation:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
 
 **SALARY** = (1000 x 10) + (200 x 9) + (500 x -4)
 
-</span>
 
 <span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 Hence, this shows that our prediction for the salary is:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
 
 **SALARY**<sub>predicted</sub> = 12800
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.5">
 
 Now, after getting the value of actual salary from the employee, we calculate the error between the actual and predicted value:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:2.2">
 
 **SALARY**<sub>actual</sub> = 9800
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
 
 **Error** = **SALARY**<sub>predicted</sub> - **SALARY**<sub>actual</sub> = 12800 - 9800 = 3000
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 We see that our error is **3000**, we want to make this error as small as possible by tweaking the parameter values appropriately. But how do we do that? How do we decide what is the correct way of changing the parameter values? Obviously, we can make guesses intuitively and change the parameter values (increase or decrease) to make the error small enough. However, this won't be practical if we have one hundred features and not only three. One hundred features mean one hundred parameter values, remember? Obviously, we have to find a better way than this.
 
@@ -115,9 +82,6 @@ Moreover, there is another issue to consider. This error cannot represent only o
 
 The error function that we have used here (Error = Predicted - Actual) is one of the most basic functions in machine learning which has its certain limitations. Consequently, while implementing linear regression, we will use a more sophisticated version called **sum of squared errors (SSE)**, which is simply the the sum of square differences between the actual and predicted values.
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
     
 Now, a quick change of notation is in order. The term **cost** is often used a lot instead of the term **error** and we'll use that here as well, since it *costs* us to miss the actual value by some amount. If predicted value was equal to the actual value, the cost would be zero. As a result, a cost function is used as a measure of how wrong the model is in terms of its ability to estimate the relationship between feature and target values.
 
@@ -129,35 +93,20 @@ Now, how do we decide which direction we should move towards to make the total c
 
 In our analogy, the parameters that we have chosen are actually the **variables** of our cost function because the cost function varies as each parameter varies (variable, duh!). We have to take the derivative with respect to each parameter and update the parameters using those derivative values. In the picture below, we can see the graph of the cost function against just one parameter (Length of Service). Now when we calculate the partial derivative of the cost function with respect to this parameter only, we get the direction we need to move towards for this parameter, in order to reach the local minima whose slope equals to 0.
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:1.2">
 
 ![cost](img/cost_function.png)
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 When we take the derivative with respect to each parameter and find the direction we need to move towards, we update each parameter simultaneously:
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 16px; line-height:3.2">
 
 **Length of Service**<sub>updated</sub> = **Length of Service**<sub>old</sub> - (*Learning Rate* x **Partial Derivative w.r.t. Length of Service**)
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 This **update rule** is applied to all of the parameters using their partial derivatives respectively. When we apply update rule once, it means we are iterating the dataset once. Here, **learning rate**, also called learning step, is the amount that the parameters are updated during learning. Learning rate is a configurable hyperparameter, often chosen between 0.0 and 1.0, that defines the rate or speed at which the model learns. If it's high, the model learns quickly, however it's too high, we might miss the optimal value during learning because we might have taken a really big step. If the learning rate is too low, then the model will take a lot of time to converge to the lowest cost function value. Obviously, tuning this hyperparameter is of great importance in machine learning.
 
 So one iteration means asking each employee those three questions only once (or going over the dataset once) and updating the parameter values accordingly. After iterating the dataset many times, iterating stops when we reach a point *where the cost is low enough for us to decide that we can stop the algorithm* and use the parameter values that were updated up until now. Then, we can use those **optimized** values to predict new target values for new feature values. What do we mean by optimized here? Well, after we have found parameter values for our three features, now they can predict new target values with lowest possible error. Hence, we optimized those parameters in our model. This is where learning of the machine learning happens indeed. We **learn** the parameters that minimizes our cost function.
 
-</span>
-
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
     
 ## Linear Regression Implementation (Finally!)
 
@@ -167,7 +116,6 @@ from sklearn.datasets import load_boston
 import matplotlib.pyplot as plt
 ```
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 First things first, we start by importing necessary libraries to help us along the way. As I have mentioned before, we won't be using any packages that will give us already implemented algorithm models such as `sklearn.linear_model` since it won't help us grasp what is the underlying principles of implementing an algorithm because it is an out-of-the-box (hence, ready-made) solution. We want to do it the hard way, not the easy way.
 
@@ -192,8 +140,6 @@ print("Total samples in our dataset is: {}".format(X.shape[0]))
     Total samples in our dataset is: 506
 
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
-
 Now, it's time to load the dataset we will be using throughout this post. The `sklearn.datasets` package offers some toy datasets to illustrate the behaviour of some algorithms and we will be using `load_boston()`function to return a regression dataset. Here, `dataset.data` represents the feature samples and `dataset.target` returns the target values, also called **labels**. 
 
 It is important to note that, when we are loading the target values, we are adding a new dimension to the data (`dataset.target[:,np.newaxis]`), so that we can use the data as a column vector. Remember, linear algebra makes a distinction between row vectors and column vectors. However, in **NumPy** there are only n-dimensional arrays and no concept for row and column vectors, per se. We can use arrays of shape `(n, 1)` to imitate column vectors and `(1, n)` for row vectors. Ergo, we can use our target values of shape `(n, )` as a column vector of shape ` (n, 1)` by adding an axis explicitly. Luckily, we can do that with **NumPy**'s own `newaxis` function which is used to increase the dimension of an array by one more dimension, when used once.
@@ -206,7 +152,6 @@ def compute_cost(X, y, params):
     return (1/(2*n_samples))*np.sum((h-y)**2)
 ```
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 We have chosen the *sum of squared errors (SSE)* as our cost function, so we'll implement it here. `h` denotes our hypothesis function which is just a candidate function for our mapping from inputs (`X`) to outputs (`y`). When we take the inner product of our features with the parameters (`X @ params`), we are explicitly stating that we will be using linear regression for our hypthesis from a broad list of other machine learning algorithms, that is, we have decided that the relation between feature and target values is best described by the linear regression. 
 
@@ -223,7 +168,6 @@ def gradient_descent(X, y, params, learning_rate, n_iters):
     return (J_history, params)
 ```
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 We can now implement gradient descent algorithm. Here, `n_iters` denotes the number of iterations for the gradient descent. We want to keep the history of our costs returned by the cost function in each iteration so we use a **NumPy** array `J_history` for that. As for the update rule, `1/n_samples) * X.T @ (X @ params - y) ` corresponds to the partial derivative of the cost function with respect to the parameters. So, `params` holds the updated parameter values according to the update rule. 
 
@@ -241,7 +185,6 @@ n_features = np.size(X,1)
 params = np.zeros((n_features,1))
 ```
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 Before we run the gradient descent algorithm on our dataset, we **normalize** the data. Normalization is a technique often applied as part of data preparation in machine learning pipeline which typically means rescaling the values into a range of `[0,1]` to boost our accuracy while lowering the cost (error). Also, note that we initialize the paramaters (`params`) to zeros.
 
@@ -293,11 +236,8 @@ plt.show()
 ![png](img/output_12_1.png)
 
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
-
 There you have it! We have run the algorithm successfully as we can clearly see that the cost decreased drastically from 296 to 11. The `gradient_descent` function returned the optimal parameter values, consequently, we can now use them to predict new target values. 
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Class Implementation for Linear Regression
 
@@ -360,11 +300,9 @@ class LinearRegression():
         return self.params
 ```
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 Do notice the similarities between our implementation and `sklearn`'s own implemenation of linear regression. I have done it on purpose of course, to show you that we can write a simplified version of a widely used module that works in a similar way to `sklearn`'s implementation. I also (mostly) did it for the fun, though!
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 ## Comparing Our Implementation with Sklearn's Linear Regression
 
@@ -429,7 +367,6 @@ pd.DataFrame([[our_train_accuracy, sklearn_train_accuracy],[our_test_accuracy, s
 
 
 
-<span style="font-family:Helvetica ;font-size: 14px; line-height:2.2">
 
 We have done a pretty good job with that implementation, haven't we? Our training accuracy is almost the same as the `sklearn`'s accuracy. Also, test accuracy is not so bad comparing to the test accuracy of `sklearn`. 
 
